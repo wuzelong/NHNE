@@ -20,18 +20,18 @@ class MNN(nn.Module):
         decode = F.leaky_relu(self.decode1(decode))
 
         encode_norm = torch.sum(encode * encode, dim=1, keepdim=True)
-        L_1st = self.alpha * torch.sum(
+        L_kth = self.alpha * torch.sum(
             w_mat * (encode_norm - 2 * torch.mm(encode, torch.transpose(encode, dim0=0, dim1=1))
                      + torch.transpose(encode_norm, dim0=0, dim1=1)))
 
         temp = (decode - adj_batch) * c_mat
-        L_kth = torch.linalg.norm(temp, ord='nuc')
+        L_2nd = torch.linalg.norm(temp, ord='nuc')
 
         L_reg = 0
         for param in self.parameters():
             L_reg += self.v * torch.sum(param * param)
 
-        return L_1st + L_kth + L_reg
+        return L_kth + L_2nd + L_reg
 
     def savector(self, adj):
         encode = F.leaky_relu(self.encode0(adj))
