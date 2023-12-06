@@ -1,5 +1,15 @@
 # NHNE 
-Implementation of Nuclear norm Network Embedding (NNE) and Nuclear norm High-order Network Embedding (NHNE) models, please refer to the origin paper for more details
+Code for paper "Nuclear Norm-Based Network Embedding with High-order Proximity for Sparse Networks and Applications". PyTorch implementations of Nuclear norm Network Embedding (NNE) and Nuclear norm High-order Network Embedding (NHNE) algorithms are provided for downstream tasks such as network reconstruction, link prediction, node classification, and network visualization.
+
+![framework](https://github.com/wuzelong/NHNE/assets/45838327/0e088a23-f8ec-4d9d-aa53-8dfc64dcb404)
+
+*requirements*：
+* torch
+* numpy
+* sklearn
+* matplotlib
+* liblinear-official
+* iterative-stratification
 
 *examples*：
 1. Reconstruction
